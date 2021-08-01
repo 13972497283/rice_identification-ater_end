@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tenglong.mapper.EncyclopediaMapper">
+    <select id="findByName" resultType="com.tenglong.entity.Encyclopedia">
+        SELECT diseaseName,harm,symptom,preventionMethod,image,other,visits FROM encyclopedia WHERE (diseaseName ='水稻叶鞘网斑病')
+    </select>
+</mapper>

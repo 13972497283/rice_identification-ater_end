@@ -1,0 +1,43 @@
+server:
+  port: 8888
+#配置mysql数据库
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://81.68.117.246:3306/rice?serverTimezone=GMT%2B8&allowMultiQueries=true
+    username: root
+    password: 123456
+    hikari:
+      minimum-idle: 5
+      # 空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 180000
+      # 连接池最大连接数，默认是10
+      maximum-pool-size: 10
+      # 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+      auto-commit: true
+      # 连接池名称
+      pool-name: MyHikariCP
+      # 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      # 数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+#配置MybatisPlus
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wxh.tenglong.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+oss:
+  qiniu:
+    domain: qwuecf0h6.hn-bkt.clouddn.com # 访问域名(默认使用七牛云测试域名)
+    accessKey: gGA6ijvy7cRkLrDFT9_4Cp-Z_bCFE1h40zY4egHm # 公钥
+    secretKey: zHSmU1Oou7cvKfq1VFkTd9Kiq4I6qhNgnTVsZxAf # 私钥
+    bucketName: rice121  #存储空间名称
+
+path:
+  upload:
+    temp: ${user.dir}\upload\temp
